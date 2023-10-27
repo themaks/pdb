@@ -267,7 +267,7 @@ pub(crate) fn parse_type_data<'t>(buf: &mut ParseBuffer<'t>) -> Result<TypeData<
         // https://github.com/Microsoft/microsoft-pdb/blob/082c5290e5aff028ae84e43affa8be717aa7af73/include/cvinfo.h#L2683-L2688
         LF_ENUMERATE | LF_ENUMERATE_ST => Ok(TypeData::Enumerate(EnumerateType {
             attributes: FieldAttributes(buf.parse_u16()?),
-            value: buf.parse()?,
+            value: buf.parse_unsigned()?,
             name: parse_string(leaf, buf)?,
         })),
 
